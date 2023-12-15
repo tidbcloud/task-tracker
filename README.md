@@ -1,4 +1,4 @@
-![Task Tracker Application](./banner.png)
+![Task Tracker Application](./frontend/banner.png)
 
 # TiDB Cloud Data Service - Task Tracker Application.
 
