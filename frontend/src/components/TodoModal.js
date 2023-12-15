@@ -5,7 +5,11 @@ import { useDispatch } from 'react-redux';
 import { AnimatePresence, motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import { format } from 'date-fns';
-import { addTodo, updateTodo } from '../slices/todoSlice';
+import {
+  fetchTodoList,
+  addTodoItem,
+  updateTodoItem,
+} from '../slices/todoSlice';
 import styles from '../styles/modules/modal.module.scss';
 import Button from './Button';
 
@@ -33,19 +37,22 @@ const dropIn = {
 function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
+  const [desc, setDesc] = useState('');
   const [status, setStatus] = useState('incomplete');
 
   useEffect(() => {
     if (type === 'update' && todo) {
-      setTitle(todo.title);
+      setTitle(todo.task);
+      setDesc(todo.description);
       setStatus(todo.status);
     } else {
       setTitle('');
+      setDesc('');
       setStatus('incomplete');
     }
   }, [type, todo, modalOpen]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (title === '') {
       toast.error('Please enter a title');
@@ -53,20 +60,28 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
     }
     if (title && status) {
       if (type === 'add') {
-        dispatch(
-          addTodo({
+        await dispatch(
+          addTodoItem({
             id: uuid(),
             title,
+            desc,
             status,
             time: format(new Date(), 'p, MM/dd/yyyy'),
           })
         );
-        toast.success('Task added successfully');
+        dispatch(fetchTodoList());
       }
       if (type === 'update') {
-        if (todo.title !== title || todo.status !== status) {
-          dispatch(updateTodo({ ...todo, title, status }));
+        if (
+          todo.task !== title ||
+          todo.status !== status ||
+          todo.description !== desc
+        ) {
+          await dispatch(
+            updateTodoItem({ ...todo, task: title, status, desc })
+          );
           toast.success('Task Updated successfully');
+          dispatch(fetchTodoList());
         } else {
           toast.error('No changes made');
           return;
@@ -117,6 +132,15 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                   id="title"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
+                />
+              </label>
+              <label htmlFor="desc">
+                Description
+                <input
+                  type="text"
+                  id="desc"
+                  value={desc}
+                  onChange={(e) => setDesc(e.target.value)}
                 />
               </label>
               <label htmlFor="type">

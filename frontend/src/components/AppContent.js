@@ -1,8 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from '../styles/modules/app.module.scss';
 import TodoItem from './TodoItem';
+import { fetchTodoList } from '../slices/todoSlice';
 
 const container = {
   hidden: { opacity: 1 },
@@ -23,9 +24,13 @@ const child = {
 };
 
 function AppContent() {
-  const todoList = useSelector((state) => state.todo.todoList);
+  const todoList = useSelector((state) => state.todo.todoList) || [];
   const filterStatus = useSelector((state) => state.todo.filterStatus);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchTodoList());
+  }, []);
   const sortedTodoList = [...todoList];
   sortedTodoList.sort((a, b) => new Date(b.time) - new Date(a.time));
 
@@ -45,11 +50,7 @@ function AppContent() {
     >
       <AnimatePresence>
         {filteredTodoList && filteredTodoList.length > 0 ? (
-          filteredTodoList.map((todo) => (
-            // <motion.div key={todo.id} variants={child}>
-            <TodoItem key={todo.id} todo={todo} />
-            // </motion.div>
-          ))
+          filteredTodoList.map((todo) => <TodoItem key={todo.id} todo={todo} />)
         ) : (
           <motion.p variants={child} className={styles.emptyText}>
             No Todos

@@ -1,10 +1,14 @@
-import { format } from 'date-fns';
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import React, { useEffect, useState } from 'react';
 import { MdDelete, MdEdit } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
-import { deleteTodo, updateTodo } from '../slices/todoSlice';
+import {
+  fetchTodoList,
+  updateTodoItem,
+  deleteTodoItem,
+} from '../slices/todoSlice';
 import styles from '../styles/modules/todoItem.module.scss';
 import { getClasses } from '../utils/getClasses';
 import CheckButton from './CheckButton';
@@ -31,16 +35,18 @@ function TodoItem({ todo }) {
     }
   }, [todo.status]);
 
-  const handleCheck = () => {
+  const handleCheck = async () => {
     setChecked(!checked);
-    dispatch(
-      updateTodo({ ...todo, status: checked ? 'incomplete' : 'complete' })
+    await dispatch(
+      updateTodoItem({ ...todo, status: checked ? 'incomplete' : 'complete' })
     );
+    dispatch(fetchTodoList());
   };
 
-  const handleDelete = () => {
-    dispatch(deleteTodo(todo.id));
+  const handleDelete = async () => {
+    await dispatch(deleteTodoItem(todo.id));
     toast.success('Todo Deleted Successfully');
+    dispatch(fetchTodoList());
   };
 
   const handleUpdate = () => {
@@ -59,11 +65,10 @@ function TodoItem({ todo }) {
                 todo.status === 'complete' && styles['todoText--completed'],
               ])}
             >
-              {todo.title}
+              {todo.task}
             </p>
-            <p className={styles.time}>
-              {format(new Date(todo.time), 'p, MM/dd/yyyy')}
-            </p>
+            <p className={styles.todoDesc}>description: {todo.description}</p>
+            <p className={styles.time}>updated_time: {todo.updated_at}</p>
           </div>
         </div>
         <div className={styles.todoActions}>

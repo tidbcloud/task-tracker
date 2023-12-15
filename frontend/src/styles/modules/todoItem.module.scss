@@ -46,16 +46,47 @@
 	flex-direction: column;
 	overflow: hidden;
 }
+// .todoText {
+// 	word-break: break-all;
+// 	font-weight: 500;
+// 	font-size: 1.4rem;
+// 	color: var(--black-2);
+//
+// 	&--completed {
+// 	    background-color: lightgreen;
+// // 		text-decoration: line-through;
+// // 		opacity: 0.7;
+// 	}
+// }
 .todoText {
-	word-break: break-all;
-	font-weight: 500;
-	font-size: 1.4rem;
-	color: var(--black-2);
+    word-break: break-all;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: var(--black-2);
+    position: relative; /* 为了添加图标或标志 */
+}
 
-	&--completed {
-		text-decoration: line-through;
-		opacity: 0.7;
-	}
+.todoText--completed {
+    background-color: lightgreen; /* 背景色为浅绿色 */
+    text-decoration: line-through; /* 添加删除线 */
+    opacity: 0.7; /* 调整透明度 */
+}
+
+.todoText--completed::after {
+    content: '\2713'; /* 添加对号图标 */
+    position: absolute;
+    right: 10px; /* 或根据需要调整位置 */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.todoDesc {
+    word-break: break-all;
+	display: block;
+	font-size: 1.2rem;
+	font-weight: 300;
+	margin-top: -0.2rem;
+	color: var(--black);
 }
 .time {
 	display: block;
