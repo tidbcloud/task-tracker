@@ -27,8 +27,8 @@ function AppHeader() {
         value={filterStatus}
       >
         <option value="all">All</option>
-        <option value="incomplete">Incomplete</option>
-        <option value="complete">Completed</option>
+        <option value="Incomplete">Incomplete</option>
+        <option value="Completed">Completed</option>
       </SelectButton>
       <TodoModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen} />
     </div>

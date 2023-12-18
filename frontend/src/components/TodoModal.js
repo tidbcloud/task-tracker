@@ -38,7 +38,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
-  const [status, setStatus] = useState('incomplete');
+  const [status, setStatus] = useState('Incomplete');
 
   useEffect(() => {
     if (type === 'update' && todo) {
@@ -48,7 +48,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
     } else {
       setTitle('');
       setDesc('');
-      setStatus('incomplete');
+      setStatus('Incomplete');
     }
   }, [type, todo, modalOpen]);
 
@@ -150,8 +150,8 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
                 >
-                  <option value="incomplete">Incomplete</option>
-                  <option value="complete">Completed</option>
+                  <option value="Incomplete">Incomplete</option>
+                  <option value="Completed">Completed</option>
                 </select>
               </label>
               <div className={styles.buttonContainer}>

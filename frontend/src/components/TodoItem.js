@@ -28,7 +28,7 @@ function TodoItem({ todo }) {
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
 
   useEffect(() => {
-    if (todo.status === 'complete') {
+    if (todo.status === 'Completed') {
       setChecked(true);
     } else {
       setChecked(false);
@@ -38,7 +38,7 @@ function TodoItem({ todo }) {
   const handleCheck = async () => {
     setChecked(!checked);
     await dispatch(
-      updateTodoItem({ ...todo, status: checked ? 'incomplete' : 'complete' })
+      updateTodoItem({ ...todo, status: checked ? 'Incomplete' : 'Completed' })
     );
     dispatch(fetchTodoList());
   };
@@ -62,7 +62,7 @@ function TodoItem({ todo }) {
             <p
               className={getClasses([
                 styles.todoText,
-                todo.status === 'complete' && styles['todoText--completed'],
+                todo.status === 'Completed' && styles['todoText--completed'],
               ])}
             >
               {todo.task}
