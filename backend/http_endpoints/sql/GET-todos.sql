@@ -1,2 +1,2 @@
-USE todo;
+USE tasktracker;
 SELECT * FROM `todos`;

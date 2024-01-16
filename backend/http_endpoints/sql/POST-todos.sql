@@ -1,2 +1,2 @@
-USE todo;
-INSERT INTO `todos` (`task`,`description`,`status`) VALUES(${task},${description},${status});
+USE tasktracker;
+INSERT INTO `todos` (`id`,`task`,`description`,`status`) VALUES(${id},${task},${description},${status});

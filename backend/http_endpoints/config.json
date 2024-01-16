@@ -31,6 +31,13 @@
     },
     "params": [
       {
+        "name": "id",
+        "type": "number",
+        "required": 0,
+        "default": "",
+        "description": ""
+      },
+      {
         "name": "task",
         "type": "string",
         "required": 1,
