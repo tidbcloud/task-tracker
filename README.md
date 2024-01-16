@@ -2,6 +2,12 @@
 The primary goal is to provide users with  guidance in constructing REST endpoints using TiDB Cloud Data Service (TCDS). To enhance the learning experience, we will actively engage in building a [Task Tracker application](https://task-tracker-two-ashen.vercel.app/) throughout the tutorial. This hands-on approach ensures that by the end of this  learning journey, you will have not just acquired knowledge but also a tangible, functional Task Tracker application—an exciting outcome of your newfound skills.
 While the React frontend is hosted on [Vercel](https://vercel.com), this guide predominantly focuses on the backend development process. You will be led through the creation of vital backend components, including clusters and tables, alongside the insertion of sample data. Later, the tutorial will also demonstrate how to craft backend APIs using TCDS. Towards the end, we'll guide you in seamlessly integrating your React frontend with the backend APIs you've developed, culminating in hosting the entire application on Vercel.
 By the end of this tutorial, you will not only grasp TCDS intricacies but also possess a fully functional backend solution. This tutorial ensures accessibility for both beginners and seasoned developers, offering a transformative learning experience.
+A complete task tracker application with all features.
+
+**live demo: [https://task-tracker-two-ashen.vercel.app/](https://task-tracker-two-ashen.vercel.app/)**
+
+**Watch On Youtube: [https://youtu.be/?](https://youtu.be/?)**
+
 ## Set up a TiDB Serverless Cluster
 Take the steps below to create a free TiDB Serverless cluster:
 1. [Sign in](https://tidbcloud.com/) to your TiDB Cloud. Register a [TiDB Cloud](https://tidbcloud.com/free-trial?__hstc=86493575.ea015085c8a32000ad5a5e1466ed2d06.1697839011824.1703268569892.1704819917984.73&__hssc=86493575.2.1704819917984&__hsfp=323772859) account if you haven’t got one.
