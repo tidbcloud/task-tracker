@@ -63,7 +63,7 @@ Assuming the excution of the script successful, the next step is to create a Dat
 For this tutorial, you'll create four HTTPS endpoints (POST, GET, PUT, DELETE) to execute CRUD operations on the 'todos' table. The process for creating the first endpoint will be detailed, providing guidance for the remaining three. The subsequent endpoints follow a similar pattern with minor tweaks, such as adjusting SQL or endpoint configurations (e.g., Properties, Params). For more detailed information, refer to our [documentation](https://docs.pingcap.com/tidbcloud/data-service-manage-endpoint#create-an-endpoint) on creating new endpoints.
 1. `POST /todos` endpoint
 
-**POST /todos** endpoint, allows you to add a new task to the 'todos' table, facilitating the create operation.
+    The POST /todos endpoint will allow you to add a new task to the 'todos' table, facilitating the create operation.
 - On the left navigation bar of the `Todo App`, click the “+” symbol, and select `Create Endpoint` option.
   ![Figure 4  - Create Endpoint ( Entry Point )](./frontend/image/f4.png)
   - **Configure Endpoint Properties**
@@ -84,7 +84,7 @@ For this tutorial, you'll create four HTTPS endpoints (POST, GET, PUT, DELETE) t
     INSERT INTO `todos` (`task`,`description`,`status`)
     VALUES (${task},${description},${status});
     ```
-  Copy the SQL script into the natively providedSQL Editor window as shown below,
+  Copy the SQL script into the natively provided `SQL Editor window` as shown below,
   ![Figure 6  - Configure Endpoint ( SQL Editor )](./frontend/image/f6.png)
 - **Configure Endpoint Parameters**
   Parameters are variables that enhance the flexibility and dynamicity of your endpoint. Parameters are automatically generated for you in this process. All you need to do is review the default parameter configuration and make adjustments to suit your specific needs.
@@ -99,7 +99,8 @@ For this tutorial, you'll create four HTTPS endpoints (POST, GET, PUT, DELETE) t
   Congratulations on successfully creating your first POST /todos endpoint!
   Now, let's leverage this knowledge to create the remaining endpoints.
 2. `GET /todos`
-   The GET todos endpoint will retrieve all tasks stored in our todos table.
+   
+    The GET /todos endpoint will retrieve all tasks stored in our todos table.
 - **Configure Endpoint Properties**
   Under the ‘Properties’ tab,
   Enter the `Path` as "**/todos**".
@@ -113,7 +114,8 @@ For this tutorial, you'll create four HTTPS endpoints (POST, GET, PUT, DELETE) t
   >
   >The GET /todos endpoint will not have any parameters
 3. `PUT /todos`
-   The PUT /todos endpoint will be used to update a task, especially when the task status changes.
+   
+    The PUT /todos endpoint will be used to update a task, especially when the task status changes.
 - **Configure Endpoint Properties**
   Under the ‘Properties’ tab,
   Enter the `Path` as "**/todos**".
@@ -131,7 +133,8 @@ For this tutorial, you'll create four HTTPS endpoints (POST, GET, PUT, DELETE) t
   As you can see in the SQL script above, each task is identified and updated using its `id`. It's important that the `id` parameter be configured as `Required` and its corresponding type to be changed from its default value i.e string to `Number` to match the type of the `id` field in todos table as shown below,
   ![Figure 8 - Configure PUT /todos Endpoint ( Params )](./frontend/image/f8-1.png)
 4. `DEL /todos`
-   The DELETE /todos endpoint will be used to delete a task.
+   
+    The DELETE /todos endpoint will be used to delete a task.
 - **Configure Endpoint Properties**
   Under the ‘Properties’ tab,
   Enter the `Path` as "**/todos**".
@@ -148,7 +151,7 @@ For this tutorial, you'll create four HTTPS endpoints (POST, GET, PUT, DELETE) t
 ## Test Endpoint
   Now that we've successfully created the CRUD (Create, Read, Update, Delete) endpoints for tasks, it's crucial to test them locally to ensure they meet your business needs before making them available for the client application to consume.
   Let's use the `POST /todos` endpoint as an example to demonstrate how you can effectively test the endpoints within the TCDS environment.
-- In the Endpoints list select `POST \todos`.
+- In the Endpoints list select `POST /todos`.
 - Under the `Params` tab, navigate to the 'Test Values' section.
 - Enter the text **Pay Internet Bill** as the test value for the `task`.
 - Enter the text **May Internet Bill** as the test value for the `description`.
@@ -184,7 +187,7 @@ Before you start exploring your new endpoints, you’ll need to set up an API Ke
    Now that your API Key is set up, it’s time to delve into your newly created endpoints. There are two straightforward methods to accomplish this:
 - **API Docs**: Utilize the built-in Swagger documentation provided by TiDB Cloud Data Services.
 - **Postman**: Leverage the integrated Postman support within TiDB Cloud Data Service.
-  For the purpose of this blog, we will use API Documentation via  Swagger UI. If you want to learn more about Postman integration, refer to our [documentation](https://docs.pingcap.com/tidbcloud/data-service-manage-data-app).
+  For the purpose of this blog, we will use API Documentation via  Swagger UI. If you want to learn more about Postman integration, refer to our [documentation](https://docs.pingcap.com/tidbcloud/data-service-postman-integration).
 1. On the Data App home page, click **View API Docs**.
    ![Figure 15 - Explore Endpoints (View API Doc)](./frontend/image/f15.png)
 2. In the new browser window, you will find the API documentation generated through Swagger UI adheres to the [Open API Specification](https://swagger.io/specification/). Click the **Authorize** button located in the top right corner.
