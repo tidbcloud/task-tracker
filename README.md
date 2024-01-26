@@ -6,8 +6,6 @@ A complete task tracker application with all features.
 
 **live demo: [https://task-tracker-two-ashen.vercel.app/](https://task-tracker-two-ashen.vercel.app/)**
 
-**Watch On Youtube: [https://youtu.be/?](https://youtu.be/?)**
-
 ## Set up a TiDB Serverless Cluster
 Take the steps below to create a free TiDB Serverless cluster:
 1. [Sign in](https://tidbcloud.com/) to your TiDB Cloud. Register a [TiDB Cloud](https://tidbcloud.com/free-trial?__hstc=86493575.ea015085c8a32000ad5a5e1466ed2d06.1697839011824.1703268569892.1704819917984.73&__hssc=86493575.2.1704819917984&__hsfp=323772859) account if you haven’t got one.
